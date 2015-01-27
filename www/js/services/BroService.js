@@ -40,11 +40,16 @@ var BroService = function () {
 
 	this.login = function (username, password) {
 		var deferred = $.Deferred();
+		var device_platform = device.platform;
+		var device_id = device.uuid;
+
+		alert(device_platform + " : " + device_id);
+
 		var user_details = {
 			username: username,
 			password: password,
-			deviceId: deviceId,
-			deviceType: deviceType
+			device_id: device_id,
+			device_type: device_platform
 		};
 
 		$.ajax({
@@ -52,16 +57,17 @@ var BroService = function () {
         	url: API_ROOT + "/sign_in",
         	data: JSON.stringify(user_details),
         	contentType: "application/json; charset=utf-8",
-        	dataType: "json",
-        	success: function (data) {
-        		console.log("Got token: " + data.token);
-        		deferred.resolve();
+        	dataType: "text",
+        	error: function (xhr, status, error) {
+        		console.log(status + " : " + error);
+        		deferred.reject();
         	},
-        	failure: function(errMsg) {
-				deferred.reject();
+        	success: function (data, status) {
+        		console.log("Login success: " + data);
+        		deferred.resolve();
         	}
-		});		
+		});
 
-		return deferred.promise();
+		return deferred;
 	};
 }
