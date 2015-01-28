@@ -25,34 +25,46 @@
         <h1>Bro</h1>
       </div>
     </div>
-      <form id="login-form">
-        <div class="row">
-          <div class="form-group col-xs-12">
-            <input type="text" class="form-control" id="username" placeholder="Username">
-          </div>
-          <div class="form-group col-xs-12">
-            <input type="password" class="form-control" id="password" placeholder="Password">
-          </div>
+    <form id="login-form">
+      <div class="row">
+        <div class="form-group col-xs-12">
+          <input type="text" class="form-control" id="username" placeholder="Username">
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <button id="sign_up" type="submit" class="btn btn-primary">Create Account</button>
-          </div>
+        <div class="form-group col-xs-12">
+          <input type="password" class="form-control" id="password" placeholder="Password">
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <button id="log_in" type="submit" class="btn btn-default">Sign In</button>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button id="sign_up" type="submit" class="btn btn-primary">Create Account</button>
         </div>
-      </form>
-    </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button id="log_in" type="submit" class="btn btn-default">Sign In</button>
+        </div>
+      </div>
+    </form>
   </div>
 </script>
 
 <script id="bros-tpl" type="text/template">
-    <div>
-        <p>Bros</p>
+  <div class="container-fluid">
+    <div class="row header-row">
+      <div class="col-xs-12">
+        <h1>Bro</h1>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="bro_list">
+          {{#each bros}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
 </script>
 
 <script src="cordova.js"></script>
