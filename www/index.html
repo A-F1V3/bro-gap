@@ -58,10 +58,18 @@
     <div class="row">
       <div class="col-xs-12">
         <ul class="bro_list">
-          {{#each bros}}
+          {{#each friends}}
           <li>{{this}}</li>
           {{/each}}
         </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <form class="form-inline">
+          <input type="text" class="form-control" id="friend_name" placeholder="Add Friend"></input>
+          <button type="submit" id="add_friend" class="btn btn-default">Add</button>
+        </form>
       </div>
     </div>
   </div>

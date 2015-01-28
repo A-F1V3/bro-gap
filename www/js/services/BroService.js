@@ -83,6 +83,16 @@ var BroService = function () {
 		return $.ajax({
 			type: "GET",
 			url: API_ROOT + "/friends",
+			dataType: "json",
+			headers: {"X-Bro-Token": this.token}
+		});
+	};
+
+	this.addFriend = function(username) {
+		return $.ajax({
+			type: "POST",
+			url: API_ROOT + "/add_friend",
+			data: JSON.stringify({"username": username}),
 			headers: {"X-Bro-Token": this.token}
 		});
 	};
