@@ -4,16 +4,27 @@ var BroListView = function(service) {
 		var curView = this;
 		this.$el = $('<div/>');
 		
-		$('body').on("click", "#add_friend", function() {
+		$('body').off("click", "#add_friend").on("click", "#add_friend", function() {
 			var friend_name = $('#friend_name').val();
 			$('#friend_name').val("");
 
-			var deferred = service.addFriend(friend_name);
-			deferred.done(function() {
+			service.addFriend(friend_name).done(function() {
+				alert("Friend added");
 				$("#friend_list").append("<li>" + friend_name + "</li>");
 			});
 
 			return false;
+		});
+
+		$('body').off("click", ".send_bro").on("click", ".send_bro", function(){
+			var friend_name = $(this).data('friend');
+			alert("Send bro to friend: " + friend_name);
+			service.sendBro(friend_name);
+		});
+
+		$('body').off('click', '#logout').on('click', "#logout", function() {
+			service.logout();
+			router.load("/login");
 		});
 
 		var deferred = service.getFriends();

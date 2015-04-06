@@ -1,8 +1,9 @@
 var LoginView = function(service) {
 	this.initialize = function() {
+		alert("Initializing loginview");
 		this.$el = $('<div/>');
 
-		$('body').on("click", "#sign_up", function() {
+		$('body').off('click', '#sign_up').one("click", "#sign_up", function() {
 			alert("Sign up");
 			// TODO: Validations
 			var username = $('#username').val();
@@ -31,9 +32,9 @@ var LoginView = function(service) {
 			return false;
 		});
 
-		$('body').on("click", "#log_in", function() {
-			//alert("Sign in");
-			console.log("Signing in");
+		$('body').off('click', '#log_in').one("click", "#log_in", function() {
+			alert("Sign in");
+			//console.log("Signing in");
 
 			var username = $('#username').val();
 			var password = $('#password').val();

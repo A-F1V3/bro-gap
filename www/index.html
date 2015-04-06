@@ -59,7 +59,7 @@
       <div class="col-xs-12">
         <ul class="bro_list">
           {{#each friends}}
-          <li>{{this}}</li>
+          <li>{{this}} - <button class="send_bro" data-friend="{{this}}">Bro</button></li>
           {{/each}}
         </ul>
       </div>
@@ -72,6 +72,7 @@
         </form>
       </div>
     </div>
+    <button id="logout">Logout</button>
   </div>
 </script>
 

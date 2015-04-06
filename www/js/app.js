@@ -25,10 +25,33 @@
         router.start();
     });
 
+    var pushTokenHandler = function(result) {
+        alert("Got push token: " + result);
+        service.setPushToken(result);
+    }
+
+    var pushErrorHandler = function(error) {
+        alert("Failed to get push token:" + error);
+    }
+
     /* --------------------------------- Event Registration -------------------------------- */
     
     document.addEventListener('deviceready', function () {
-      FastClick.attach(document.body);
+        FastClick.attach(document.body);
+        var pushNotification = window.plugins.pushNotification;
+
+        pushNotification.register(
+            pushTokenHandler,
+            pushErrorHandler,
+            {
+                "badge":"true",
+                "sound":"true",
+                "alert":"true",
+                "ecb":"onNotificationAPN"
+            }
+        );
+
+
     }, false);
 
     /* ---------------------------------- Local Functions ---------------------------------- */
