@@ -5,6 +5,9 @@
 
     HomeView.prototype.template = Handlebars.compile($("#home-tpl").html());
     LoginView.prototype.template = Handlebars.compile($("#login-tpl").html());
+
+    BroListView.prototype.bro_partial = Handlebars.compile($("#bro-partial").html());
+    Handlebars.registerPartial('bro', BroListView.prototype.bro_partial);
     BroListView.prototype.template = Handlebars.compile($("#bros-tpl").html());
 
     var service = new BroService();

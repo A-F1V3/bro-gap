@@ -74,9 +74,9 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <ul class="bro_list">
+        <ul id="friend_list" class="bro_list">
           {{#each friends}}
-          <li>{{this}} - <button class="send_bro" data-friend="{{this}}">Bro</button></li>
+            {{> bro}}
           {{/each}}
         </ul>
       </div>
@@ -91,6 +91,10 @@
     </div>
     <button id="logout">Logout</button>
   </div>
+</script>
+
+<script id="bro-partial" type="text/template">
+  <li>{{this}} - <button class="send_bro" data-friend="{{this}}">Bro</button></li>
 </script>
 
 <script src="cordova.js"></script>

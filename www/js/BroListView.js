@@ -6,11 +6,11 @@ var BroListView = function(service) {
 		
 		$('body').off("click", "#add_friend").on("click", "#add_friend", function() {
 			var friend_name = $('#friend_name').val();
+			var bro_partial = this.bro_partial;
 			$('#friend_name').val("");
 
 			service.addFriend(friend_name).done(function() {
-				alert("Friend added");
-				$("#friend_list").append("<li>" + friend_name + "</li>");
+				$("#friend_list").append(curView.bro_partial(friend_name));
 			});
 
 			return false;

@@ -95,8 +95,6 @@ var BroService = function () {
 	};
 
 	this.getFriends = function() {
-		alert(this);
-		alert("Friend list with token: " + this.token);
 		console.log("Using token: " + this.token);
 		return $.ajax({
 			type: "GET",
@@ -107,7 +105,6 @@ var BroService = function () {
 	};
 
 	this.addFriend = function(username) {
-		alert("Friend request with token: " + this.token);
 		return $.ajax({
 			type: "POST",
 			url: API_ROOT + "/add_friend",
