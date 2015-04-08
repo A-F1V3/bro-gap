@@ -1,3 +1,10 @@
+/**
+ * App styles
+ */
+
+body {
+    margin-top: 20px;
+}
 
 .header-row {
     margin-top: 50px;
@@ -74,4 +81,19 @@ ul {
 .icon-location {
     background: transparent url(images/ic_action_location.png);
     background-repeat: no-repeat;
+}
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
 }

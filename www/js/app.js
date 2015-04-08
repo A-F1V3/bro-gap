@@ -26,12 +26,11 @@
     });
 
     var pushTokenHandler = function(result) {
-        alert("Got push token: " + result);
         service.setPushToken(result);
     }
 
     var pushErrorHandler = function(error) {
-        alert("Failed to get push token:" + error);
+        navigator.notification.alert("Please enable push notifications to experience Bro", null, "Push It!");
     }
 
     /* --------------------------------- Event Registration -------------------------------- */
@@ -40,20 +39,33 @@
         FastClick.attach(document.body);
         var pushNotification = window.plugins.pushNotification;
 
-        pushNotification.register(
-            pushTokenHandler,
-            pushErrorHandler,
-            {
-                "badge":"true",
-                "sound":"true",
-                "alert":"true",
-                "ecb":"onNotificationAPN"
-            }
-        );
-
-
+        if ((device.platform == 'android') || (device.platform == 'Android')) {
+            // TODO: Get an android sender_id
+            /*
+            pushNotification.register(
+                successHandler,
+                errorHandler,
+                {
+                    "senderID": "replace_with_sender_id",
+                    "ecb": "onNotification"
+                }
+            );
+            */
+        } else {
+            pushNotification.register(
+                pushTokenHandler,
+                pushErrorHandler,
+                {
+                    "badge":"true",
+                    "sound":"true",
+                    "alert":"true",
+                    "ecb":"onNotificationAPN"
+                }
+            );
+        }
     }, false);
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
 }());
+

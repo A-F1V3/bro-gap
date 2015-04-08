@@ -1,18 +1,15 @@
 var BroService = function () {
-	
-	alert("New broservice created");
 
 	var TOKEN_KEY = "bro_token";
 	var PUSH_KEY = "push_token";
 	// var API_ROOT = "https://api.brah.io/v1";
-	var API_ROOT = "http://192.168.1.241:8080";
+	var API_ROOT = "http://127.0.0.1:8080";
 
 	this.logged_in = false;
 	this.token = "";
 	this.push_token = "";
 
 	this.initialize = function () {
-		alert("Service initializing");
 		var deferred = $.Deferred();
 
 		var cur_token = window.localStorage.getItem(TOKEN_KEY);
@@ -67,7 +64,7 @@ var BroService = function () {
 		var device_platform = device.platform;
 		var device_id = device.uuid;
 
-		alert("Login called: " + device_platform + " : " + device_id);
+		console.log("Login called: " + device_platform + " : " + device_id);
 
 		var user_details = {
 			username: username,
@@ -76,13 +73,6 @@ var BroService = function () {
 			device_type: device_platform,
 			push_token: this.push_token
 		};
-
-		var success_callback = function (data, status) {
-    		console.log(this);
-    		this.loginSuccess(data, status);
-    		alert("Login success: " + data["token"]);
-    		deferred.resolve();
-    	};
 
 		$.ajax({
 			context: this,
@@ -95,7 +85,10 @@ var BroService = function () {
         		console.log(status + " : " + error);
         		deferred.reject();
         	},
-        	success: success_callback
+        	success: function (data, status) {
+    			this.loginSuccess(data, status);
+    			deferred.resolve();
+    		}
 		});
 
 		return deferred;

@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <link href="assets/css/bootstrap.min.css">
-    <link href="assets/css/bootstrap-theme.min.css">
-    <link href="assets/ratchet/css/ratchet.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="assets/css/styles.css" rel="stylesheet">
 </head>
 <body>
@@ -19,6 +18,24 @@
 </script>
 
 <script id="login-tpl" type="text/template">
+
+  <div id="errorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="errorModalTitle">Modal title</h4>
+        </div>
+        <div class="modal-body" id="errorModalBody">
+          Some content
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container-fluid">
     <div class="row header-row">
       <div class="col-xs-12">
@@ -35,12 +52,12 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="form-group col-xs-12">
           <button id="sign_up" type="submit" class="btn btn-primary">Create Account</button>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-12">
+        <div class="form-group col-xs-12">
           <button id="log_in" type="submit" class="btn btn-default">Sign In</button>
         </div>
       </div>

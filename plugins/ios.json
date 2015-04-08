@@ -15,6 +15,20 @@
                         {
                             "xml": "<feature name=\"PushPlugin\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "framework": {
+                "parents": {
+                    "AudioToolbox.framework": [
+                        {
+                            "xml": "true",
+                            "count": 1
                         }
                     ]
                 }
@@ -26,6 +40,9 @@
             "PACKAGE_NAME": "io.brah.broapp"
         },
         "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "io.brah.broapp"
+        },
+        "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "io.brah.broapp"
         }
     },
